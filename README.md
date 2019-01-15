@@ -3,7 +3,7 @@
 We deliver hands-on lab content for end-to-end DevOps for AI. This repo includes the following contents.
 
 
-## [Data Quality Check](./Data\Preparation")
+## [Data Quality Check](./"Data\Preparation"/)
 
 ## Create Workspace
 

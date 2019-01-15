@@ -18,3 +18,7 @@ We deliver hands-on lab content for end-to-end DevOps for AI. This repo includes
 ## Model Deployment
 
 ## Test Web Service
+
+
+
+Copyright (C) Microsoft Corporation. All rights reserved.​

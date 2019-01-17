@@ -11,7 +11,13 @@ Azure Machine Learning service のWorkspaceを設定します。
 
 新規Workspace作成
 ```python
-
+ws = Workspace.create(
+    name = workspace_name,
+    subscription_id = subscription_id,
+    resource_group = resource_group,
+    #create_resource_group=True,
+    location=location
+    )
 ```
 
 

@@ -7,10 +7,12 @@ Azure Machine Learning service のWorkspaceを設定します。
 ## Code ##
 [00-Workspace.py](../code/aml_service/00-Workspace.py)
 
-新規Workspaceの作成
 
-```python
-ws = Workspace.create(
+### 実装例
+
+新規Workspace作成
+```python
+ws = Workspace.create(
     name = workspace_name,
     subscription_id = subscription_id,
     resource_group = resource_group,

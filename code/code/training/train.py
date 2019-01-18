@@ -89,3 +89,6 @@ print(dirpath)
 print('Following files are uploaded ')
 print(run.get_file_names())
 run.complete()
+
+
+# https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb

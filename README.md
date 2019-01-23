@@ -21,4 +21,5 @@ We deliver hands-on lab content for end-to-end DevOps for AI. This repo includes
 
 
 
-Copyright (C) Microsoft Corporation. All rights reserved.​
+Copyright (C) Microsoft Corporation. All rights reserved.
+​

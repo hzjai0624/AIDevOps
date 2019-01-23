@@ -1,6 +1,6 @@
 # Azure ML DevOps Hands-on Lab
 
-We deliver hands-on lab content for end-to-end DevOps for AI. This repo includes the following contents.
+We deliver hands-on lab contents for end-to-end DevOps for AI. This repo includes the following contents.
 
 
 ## [Data Quality Check](./Data-Preparation/)

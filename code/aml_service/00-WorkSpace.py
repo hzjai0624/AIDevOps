@@ -1,3 +1,4 @@
+# Azure Machine Learning service Workspace情報
 from azureml.core import Workspace
 import os, json
 import azureml.core

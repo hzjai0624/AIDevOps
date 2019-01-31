@@ -1,5 +1,6 @@
-# Create Workspace
+# Workspaceの作成
 Azure Machine Learning service のWorkspaceを設定します。
+※予め接続情報をconfig.jsonに記載してください。
 
 1. Azure Machine Learning serviceのリソース情報をconfig.jsonに記載する
 2. config.jsonからWorkspaceの情報を読み取る
@@ -7,24 +8,28 @@ Azure Machine Learning service のWorkspaceを設定します。
 
 ## config.json
 下記のように記載します。
+```json
 {
-    "subscription_id": "ff18d7a8-962a-406c-858f-49acd23d6c01",
-    "resource_group": "DevOps_AzureML_Demo",
-    "workspace_name": "AzureML_Demo_ws",
-    "location": "southcentralus"
+    "subscription_id": "Azureサブスクリプション",
+    "resource_group": "リソースグループ名",
+    "workspace_name": "ワークスペース名",
+    "location": "ロケーション名"
 }
-## Code ##
-[00-Workspace.py](../code/aml_service/00-WorkSpace.py)
+```
+
+## コード ##
+スクリプト : [00-Workspace.py](../code/aml_service/00-WorkSpace.py)  
+Notebook : [00-Workspace.ipynb](../code/notebook/00-WorkSpace.ipynb)
 
 ### 実装例
 
 新規Workspace作成
 ```python
 ws = Workspace.create(
-    name = workspace_name,
-    subscription_id = subscription_id,
+    name = "ワークスペース名",
+    subscription_id = "Azureサブスクリプション",
     resource_group = resource_group,
-    #create_resource_group=True,
+    create_resource_group=True,
     location=location
     )
 ```

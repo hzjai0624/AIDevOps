@@ -1,5 +1,6 @@
+# ローカル対話型の学習
 import pickle
-from azureml.core import Workspace
+from azureml.core import Workspace, Experiment
 from azureml.core.run import Run
 import os
 from sklearn.datasets import load_diabetes
@@ -12,8 +13,17 @@ import json
 import subprocess
 from typing import Tuple, List
 
-run = Run.get_submitted_run()
+# Workspaceの取得
+ws = Workspace.from_config()
 
+# Experimentの設定
+experiment_name = 'devopslab'
+exp = Experiment(workspace  = ws, name = experiment_name)
+print(exp.name, exp.workspace.name, sep = '\n')
+
+run = exp.start_logging()
+
+# データロード
 X, y = load_diabetes(return_X_y = True)
 columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
@@ -24,6 +34,7 @@ data = {
 
 print('モデル学習開始....')
 
+# Randomly pic alpha
 alphas = np.arange(0.0, 1.0, 0.05)
 alpha=alphas[np.random.choice(alphas.shape[0], 1, replace=False)][0]
 print(alpha)
@@ -33,30 +44,4 @@ reg.fit(data['train']['X'], data['train']['y'])
 preds = reg.predict(data['test']['X'])
 run.log('mse', mean_squared_error(preds, data['test']['y']))
 
-
-# Save model as part of the run history
-model_name = "sklearn_regression_model.pkl"
-# model_name = "."
-
-with open(model_name, "wb") as file:
-    joblib.dump(value = reg, filename = model_name)
-
-# upload the model file explicitly into artifacts 
-run.upload_file(name = './outputs/'+ model_name, path_or_stream = model_name)
-print('Uploaded the model {} to experiment {}'.format(model_name, run.experiment.name))
-dirpath = os.getcwd()
-print(dirpath)
-
-
-# register the model
-# run.log_model(file_name = model_name)
-# print('Registered the model {} to run history {}'.format(model_name, run.history.name))
-
-
-
-print('Following files are uploaded ')
-print(run.get_file_names())
 run.complete()
-
-
-# https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb

@@ -1,5 +1,8 @@
-# Model Training
- 機械学習・深層学習を用いて、予測モデルを作成します。トレーニングの環境としては、様々な選択肢があります。
+# モデル学習
+機械学習・深層学習を用いて、予測モデルを作成します。本ハンズオンでは、diabeteデータを使用します。
+
+## 参考：Azure Machine Learning service の計算環境について
+トレーニングの環境としては、様々な選択肢があります。
 
 ### 1. Microsoft-Hosted Agent
 Azure DevOpsにて提供しているHosted agentは下記になります。 
@@ -19,8 +22,8 @@ Azure Machine Learning serviceで提供しているPaaS型のVM環境になり�
 ### 3. Self-hosted Agent
 ユーザ自身でVMを準備して利用する形態をさします。詳しい設定方法については、こちらの[サイト](https://qiita.com/taminami/items/9f44e8cb72e70b783c1b)をご参照ください。
 
-## Code ##
-__Microsoft-Hosted Agent__  
+## コード ##
+__Microsoft-Hosted Agent を使用した例__  
 [10-TrainOnLocal.py](../code/aml_service/10-TrainOnLocal.py)  
 
 __Machine Learning Compute__  

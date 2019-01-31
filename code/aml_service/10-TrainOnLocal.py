@@ -1,3 +1,4 @@
+# モデル学習＠ローカル環境
 from azureml.core.runconfig import RunConfiguration
 from azureml.core import Workspace
 from azureml.core import Experiment
@@ -8,7 +9,7 @@ import os, json
 ws = Workspace.from_config()
 
 # Experimentの設定
-experiment_name = 'devops-ai-lab-local'
+experiment_name = 'devopslab'
 exp = Experiment(workspace  = ws, name = experiment_name)
 print(exp.name, exp.workspace.name, sep = '\n')
 

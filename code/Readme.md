@@ -1,6 +1,6 @@
-# DevOps For AI
+# DevOps for 機械学習/深層学習
 
-This tutorial will help you to understand how to build the Continuous Integration and Continuous Delivery pipeline for Data Science work. We will be using the VSTS Team Project build and release tool for it. 
+本リポジトリでは、Azure Machine Learning service と Azure DevOps のサービスを用いて、モデル運用管理をサポートするCI/CDを構築してきます。
 
 ## Prerequisite
 - Request Azure ML Python SDK Git Access (Email Me) 

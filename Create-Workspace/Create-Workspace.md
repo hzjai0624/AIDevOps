@@ -1,6 +1,6 @@
 # Workspaceの作成
-Azure Machine Learning service のWorkspaceを設定します。
-※予め接続情報をconfig.jsonに記載してください。
+Azure Machine Learning service の Workspace を設定します。
+※予め接続情報を"config.json"に記載してください。
 
 1. Azure Machine Learning serviceのリソース情報をconfig.jsonに記載する
 2. config.jsonからWorkspaceの情報を読み取る
@@ -18,7 +18,7 @@ Azure Machine Learning service のWorkspaceを設定します。
 ```
 
 ## コード ##
-スクリプト : [00-Workspace.py](../code/aml_service/00-WorkSpace.py)  
+Script : [00-Workspace.py](../code/script/00-WorkSpace.py)  
 Notebook : [00-Workspace.ipynb](../code/notebook/00-WorkSpace.ipynb)
 
 ### 実装例

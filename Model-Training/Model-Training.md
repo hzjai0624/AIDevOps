@@ -24,7 +24,9 @@ Azure Machine Learning serviceで提供しているPaaS型のVM環境になり�
 
 ## コード ##
 __Microsoft-Hosted Agent を使用した例__  
-[10-TrainOnLocal.py](../code/aml_service/10-TrainOnLocal.py)  
+Script : [10-TrainOnLocal.py](../code/script/10-TrainOnLocal.py)  
+Notebook : [10-TrainOnLocal.ipynb](../code/notebook/10-TrainOnLocal.ipynb)
 
 __Machine Learning Compute__  
-[13-TrainOnMLCompute.py](../code/aml_service/13-TrainOnMLCompute.py)
+Script : [13-TrainOnMLCompute.py](../code/script/13-TrainOnMLCompute.py)
+Notebook : [13-TrainOnMLCompute.ipynb](../code/notebook/13-TrainOnMLCompute.ipynb)

@@ -43,6 +43,6 @@ run.log('alpha', alpha)
 
 
 # モデルファイルの保存
-model_name = "devopsnb_remote.pkl"
+model_name = "diabetes-remote.pkl"
 os.makedirs('outputs', exist_ok=True)
 joblib.dump(value=reg, filename='outputs/' + model_name)

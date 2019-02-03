@@ -1,6 +1,5 @@
 {
-    "subscription_id": "",
-    "resource_group": "",
-    "workspace_name": "",
-    "location": "southeastasia"
+    "subscription_id": "9c0f91b8-eb2f-484c-979c-15848c098a6b",
+    "resource_group": "pre-aidevops",
+    "workspace_name": "azureml"
 }

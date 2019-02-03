@@ -1,6 +1,6 @@
 {
-    "subscription_id": "9c0f91b8-eb2f-484c-979c-15848c098a6b",
-    "resource_group": "azureml_sea",
-    "workspace_name": "azureml",
+    "subscription_id": "",
+    "resource_group": "",
+    "workspace_name": "",
     "location": "southeastasia"
 }

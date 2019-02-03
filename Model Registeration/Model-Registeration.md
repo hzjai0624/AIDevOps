@@ -3,7 +3,7 @@
 
 ## コード ##
 __Microsoft-Hosted Agent を使用した例__  
-[10-TrainOnLocal.py](../code/aml_service/10-TrainOnLocal.py)  
+[10-TrainOnLocal.py](../code/script/10-TrainOnLocal.py)  
 
 __Machine Learning Compute__  
-[13-TrainOnMLCompute.py](../code/aml_service/13-TrainOnMLCompute.py)
+[13-TrainOnMLCompute.py](../code/script/13-TrainOnMLCompute.py)

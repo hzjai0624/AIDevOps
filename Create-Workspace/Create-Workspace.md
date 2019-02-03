@@ -1,13 +1,12 @@
 # Workspaceの作成
-Azure Machine Learning service の Workspace を設定します。
-※予め接続情報を"config.json"に記載してください。
+Azure Machine Learning service の Workspace を設定します。通常Workspaceは、分析テーマごとに作成します。予め接続情報を"config.json"に記載してください。
 
 1. Azure Machine Learning serviceのリソース情報をconfig.jsonに記載する
 2. config.jsonからWorkspaceの情報を読み取る
 3. 該当のリソースがない場合、新規作成する。該当リソースがある場合は、その環境をロードする
 
 ## config.json
-下記のように記載します。
+下記のように記載します
 ```json
 {
     "subscription_id": "Azureサブスクリプション",
@@ -33,7 +32,6 @@ ws = Workspace.create(
     location=location
     )
 ```
-
 
 既存Workspaceの取得
 ```python

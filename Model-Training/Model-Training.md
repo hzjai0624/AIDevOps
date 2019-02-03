@@ -1,6 +1,34 @@
 # モデル学習
 機械学習・深層学習を用いて、予測モデルを作成します。本ハンズオンでは、diabeteデータを使用します。
 
+Workspaceの取得(config.jsonから接続情報を読み込み)
+```python
+ws = Workspace.from_config()
+```
+
+リッジ回帰にてモデル学習
+```python
+reg = Ridge(alpha = alpha)
+reg.fit(data['train']['X'], data['train']['y'])
+preds = reg.predict(data['test']['X'])
+```
+
+メトリックの記録
+```python
+run.log('正規化率', alpha)
+run.log('平均二乗誤差', mean_squared_error(preds, data['test']['y']))
+```
+
+## コード ##
+__Microsoft-Hosted Agent を使用した例__  
+Script : [10-TrainOnLocal.py](../code/script/11-TrainOnLocal.py)  
+Notebook : [10-TrainOnLocal.ipynb](../code/notebook/11-TrainOnLocal.ipynb)
+
+__Machine Learning Compute__  
+Script : [13-TrainOnMLCompute.py](../code/script/13-TrainOnMLCompute.py)
+Notebook : [13-TrainOnMLCompute.ipynb](../code/notebook/13-TrainOnMLCompute.ipynb)
+
+
 ## 参考：Azure Machine Learning service の計算環境について
 トレーニングの環境としては、様々な選択肢があります。
 

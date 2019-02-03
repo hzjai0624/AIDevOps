@@ -1,9 +1,10 @@
-# Azure Machine Learning service Workspace情報
+# Azure Machine Learning service Workspaceへの接続情報
 from azureml.core import Workspace
 import os, json
 import azureml.core
 print("SDK Version:", azureml.core.VERSION)
-#print('current dir is ' +os.curdir)
+
+# config.jsonに予め接続情報を記載します。
 with open("aml_config/config.json") as f:
     config = json.load(f)
 

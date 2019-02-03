@@ -1,4 +1,4 @@
-# モデル学習＠ローカル環境
+# ローカル環境でのsklearnモデル学習 v1
 from azureml.core.runconfig import RunConfiguration
 from azureml.core import Workspace
 from azureml.core import Experiment
@@ -9,14 +9,13 @@ import os, json
 ws = Workspace.from_config()
 
 # Experimentの設定
-experiment_name = 'devopslab'
+experiment_name = 'devops0201'
 exp = Experiment(workspace  = ws, name = experiment_name)
 print(exp.name, exp.workspace.name, sep = '\n')
 
 # 実行構成
 run_config_user_managed = RunConfiguration()
 run_config_user_managed.environment.python.user_managed_dependencies = True
-
 
 # モデル学習コードの指定
 src = ScriptRunConfig(source_directory = './code', script = 'training/train.py', run_config = run_config_user_managed)
@@ -25,11 +24,6 @@ run = exp.submit(src)
 
 # 出力
 run.wait_for_completion(show_output = True)
-
-# if run.get_status() != 'Completed':
-#   raise Exception('Training on local failed with following run status: {}'.format(run.get_status()))
-
-# Writing the run id to /aml_config/run_id.json
 
 run_id={}
 run_id['run_id'] = run.id

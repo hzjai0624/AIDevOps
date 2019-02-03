@@ -7,12 +7,10 @@ from azureml.core.image import Image
 from azureml.core.webservice import Webservice
 from azureml.core.webservice import AciWebservice
 
-# Get workspace
+# ワークスペース情報の取得
 ws = Workspace.from_config()
 
-
-
-# Get the Image to deploy details
+# デプロイする推論Dockerイメージ情報を読み込み
 try:
     with open("aml_config/image.json") as f:
         config = json.load(f)
@@ -27,29 +25,26 @@ image_version = config['image_version']
 
 images = Image.list(workspace=ws)
 image, = (m for m in images if m.version==image_version and m.name == image_name)
-print('From image.json, Image used to deploy webservice on ACI: {}\nImage Version: {}\nImage Location = {}'.format(image.name, image.version, image.image_location))
+print('From image.json, Image used to deploy webservice on ACI: {}\nImage バージョン: {}\nImage 場所 = {}'.format(image.name, image.version, image.image_location))
 
-# image = max(images, key=attrgetter('version'))
-# print('From Max Version, Image used to deploy webservice on ACI: {}\nImage Version: {}\nImage Location = {}'.format(image.name, image.version, image.image_location))
-
-
+# Azure Container Instancesの設定
 aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
                                             memory_gb=1, 
                                             tags={'area': "diabetes", 'type': "regression"},
                                             description='A sample description')
 
-aci_service_name='aciwebservice'+ datetime.datetime.now().strftime('%m%d%H')
+aci_service_name='aci'+ datetime.datetime.now().strftime('%m%d%H%M')
 
+# 推論Dockerイメージのデプロイ
 service = Webservice.deploy_from_image(deployment_config=aciconfig,
                                         image=image,
                                         name=aci_service_name,
                                         workspace=ws)
 
 service.wait_for_deployment()
-print('Deployed ACI Webservice: {} \nWebservice Uri: {}'.format(service.name, service.scoring_uri))
+print('デプロイしたWebサービス: {} \nWebservice URL: {}'.format(service.name, service.scoring_uri))
 
-#service=Webservice(name ='aciws0622', workspace =ws)
-# Writing the ACI details to /aml_config/aci_webservice.json
+# ACIの情報を aci_webservice.json に書き込み
 aci_webservice = {}
 aci_webservice['aci_name'] = service.name
 aci_webservice['aci_url'] = service.scoring_uri

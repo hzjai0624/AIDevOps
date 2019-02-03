@@ -1,4 +1,4 @@
-# Dockerイメージの作成
+# 推論Dockerイメージの作成
 # Dockerイメージは、Azure ML serviceのAzure Container Registryへ自動保存
 import os, json, sys
 from azureml.core import Workspace
@@ -8,7 +8,7 @@ from azureml.core.model import Model
 # ワークスペース情報の取得
 ws = Workspace.from_config()
 
-# Get the latest model details
+# 最新モデルの情報を読み込み
 try:
     with open("aml_config/model.json") as f:
         config = json.load(f)
@@ -28,13 +28,16 @@ print('Model picked: {} \nModel Description: {} \nModel Version: {}'.format(mode
 os.chdir('./code/scoring')
 image_name = "diabetes-model-score"
 
+# Dockerイメージ設定
+## execution_script : 推論Pythonスクリプト
+## conda_file : 必要なライブラリ
 image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                   runtime = "python-slim",
                                                   conda_file = "conda_dependencies.yml",
                                                   description = "Image with ridge regression model",
                                                   tags = {'area': "diabetes", 'type': "regression"}
                                                  )
-
+# Dockerイメージ作成
 image = Image.create(name = image_name,
                      models = [model],
                      image_config = image_config,
@@ -48,13 +51,10 @@ if image.creation_state != 'Succeeded':
 
 print('{}(v.{} [{}]) stored at {} with build log {}'.format(image.name, image.version, image.creation_state, image.image_location, image.image_build_log_uri))
 
-# Writing the image details to /aml_config/image.json
+# 推論Dockerイメージの情報をimage.jsonに書き込み
 image_json = {}
 image_json['image_name'] = image.name
 image_json['image_version'] = image.version
 image_json['image_location'] = image.image_location
 with open('aml_config/image.json', 'w') as outfile:
   json.dump(image_json,outfile)
-
-
-# How to fix the schema for a model, like if we have multiple models expecting different schema, 

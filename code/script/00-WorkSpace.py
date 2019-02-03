@@ -2,7 +2,7 @@
 from azureml.core import Workspace
 import os, json
 import azureml.core
-print("Azure ML service Python SDK バージョン:", azureml.core.VERSION)
+print("Azure ML service Python SDK Version:", azureml.core.VERSION)
 
 # config.jsonに予め接続情報を記載
 with open("aml_config/config.json") as f:
@@ -28,4 +28,4 @@ except:
                              location=location)
 
 # Workspaceの情報 
-print("Workspapce接続先:", ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
+print("Workspapce Details:", ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')

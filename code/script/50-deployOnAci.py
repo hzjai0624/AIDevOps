@@ -25,7 +25,7 @@ image_version = config['image_version']
 
 images = Image.list(workspace=ws)
 image, = (m for m in images if m.version==image_version and m.name == image_name)
-print('From image.json, Image used to deploy webservice on ACI: {}\nImage バージョン: {}\nImage 場所 = {}'.format(image.name, image.version, image.image_location))
+print('From image.json, Image used to deploy webservice on ACI: {}\nImage Version: {}\nImage Location: = {}'.format(image.name, image.version, image.image_location))
 
 # Azure Container Instancesの設定
 aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, 
@@ -42,7 +42,7 @@ service = Webservice.deploy_from_image(deployment_config=aciconfig,
                                         workspace=ws)
 
 service.wait_for_deployment()
-print('デプロイしたWebサービス: {} \nWebservice URL: {}'.format(service.name, service.scoring_uri))
+print('Deployed Web Service: {} \nWebservice URL: {}'.format(service.name, service.scoring_uri))
 
 # ACIの情報を aci_webservice.json に書き込み
 aci_webservice = {}

@@ -33,15 +33,15 @@ try:
   production_model_mse=production_model_run.get_metrics().get('mse')
   # 新しいモデルのmse
   new_model_mse=new_model_run.get_metrics().get('mse')
-  print('稼働中のモデルの平均二乗誤差 : {}, 新しいモデルの平均二乗誤差: {}'.format(production_model_mse,new_model_mse))
+  print('Current Model MSE: {}, New Model MSE: {}'.format(production_model_mse,new_model_mse))
 
   promote_new_model=False
   if new_model_mse < production_model_mse:
     promote_new_model=True
-    print('新しいモデルの方が精度が高いので、モデル登録します')
+    print('New Model is Better')
 except:
   promote_new_model=True
-  print('最初のモデルなので、モデル登録します')
+  print('This is FIRST model to register')
 
 run_id = {}
 run_id['run_id'] = ''

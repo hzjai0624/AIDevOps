@@ -16,9 +16,9 @@ try:
         config = json.load(f)
         #print(config)
     if not config["run_id"]:
-        raise Exception('稼働中モデルよりも精度が高い新しいモデルはありません')
+        raise Exception('Cuttent Model is Better')
 except:
-    print('... exception 稼働中モデルよりも精度が高い新しいモデルはありません')
+    print('... exception Cuttert Model is Better')
     #raise Exception('No new model to register as production model perform better')
     sys.exit(0)
 
@@ -37,7 +37,7 @@ os.makedirs(model_local_dir,exist_ok=True)
 model_name= 'prelab3.pkl'
 run.download_file(name = './outputs/'+model_name, 
                        output_file_path = './model/'+model_name)
-print('モデルファイル {} のダウンロード'.format(model_name))
+print('Model File Download{} '.format(model_name))
 os.chdir('./model')
 
 # モデル登録

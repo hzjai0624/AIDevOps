@@ -19,7 +19,7 @@ ws = Workspace.from_config()
 # Experimentの設定
 experiment_name = 'prelab3'
 exp = Experiment(workspace  = ws, name = experiment_name)
-print("Workspace名" + exp.workspace.name, "Experiment名：" +exp.name, sep = '\n')
+print("Workspace: " + exp.workspace.name, "Experiment: " +exp.name, sep = '\n')
 
 # Azure ML service メトリック取得
 run = exp.start_logging()
@@ -33,20 +33,20 @@ data = {
     "test":{"X": X_test, "y": y_test}
 }
 
-print('モデル学習開始....')
+print('Model Training Started ...')
 
 # ランダムにハイパーパラメータを選択
 alphas = np.arange(0.0, 1.0, 0.05)
 alpha=alphas[np.random.choice(alphas.shape[0], 1, replace=False)][0]
-print("パラメータ：", alpha)
+print("Parameter: ", alpha)
 reg = Ridge(alpha = alpha)
 reg.fit(data['train']['X'], data['train']['y'])
-print("モデル学習完了")
+print("Model Training Completed")
 
 #テストデータに対する予測値出力と精度確認
 preds = reg.predict(data['test']['X'])
 mse = mean_squared_error(preds, data['test']['y'])
-print("平均二乗誤差:", mse)
+print("mse: ", mse)
 
 # メトリック記録
 run.log('alpha', alpha)

@@ -1,23 +1,23 @@
 # Azure ML DevOps Hands-on Lab
 
-We deliver hands-on lab contents for end-to-end DevOps for AI. This repo includes the following contents.
+Azure Machine Learning serviceを利用して、モデリング、モデルの運用管理を実現するパイプラインを作成していきます。
 
 
 ## [事前準備](./Prerequisite)
 
-## [Create Workspace](./Create-Workspace)
+## [ワークスペースの作成](./Create-Workspace)
 
-## [Data Preparation](./Data-Preparation)
+## [データの準備](./Data-Preparation)
 
-## [Model Training](./Model-Training)
+## [モデリング](./Model-Training)
 
-## [Model Evaluation](./Model-Evaluation)
+## [モデル評価](./Model-Evaluation)
 
-## [Model Registeration](./Model-Registeration)
+## [モデル登録](./Model-Registeration)
 
-## [Model Deployment](./Model-Deployment)
+## [モデル配置](./Model-Deployment)
 
-## [Test Web Service](./Test-Web-Service)
+## [Webサービスのテスト](./Test-Web-Service)
 
 
 

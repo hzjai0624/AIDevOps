@@ -17,9 +17,9 @@ from typing import Tuple, List
 ws = Workspace.from_config()
 
 # Experimentの設定
-experiment_name = 'devopslab'
+experiment_name = 'prelab3'
 exp = Experiment(workspace  = ws, name = experiment_name)
-print(exp.name, exp.workspace.name, sep = '\n')
+print("Workspace名" + exp.workspace.name, "Experiment名：" +exp.name, sep = '\n')
 
 # Azure ML service メトリック取得
 run = exp.start_logging()
@@ -38,13 +38,34 @@ print('モデル学習開始....')
 # ランダムにハイパーパラメータを選択
 alphas = np.arange(0.0, 1.0, 0.05)
 alpha=alphas[np.random.choice(alphas.shape[0], 1, replace=False)][0]
-print(alpha)
+print("パラメータ：", alpha)
 reg = Ridge(alpha = alpha)
 reg.fit(data['train']['X'], data['train']['y'])
+print("モデル学習完了")
+
+#テストデータに対する予測値出力と精度確認
 preds = reg.predict(data['test']['X'])
+mse = mean_squared_error(preds, data['test']['y'])
+print("平均二乗誤差:", mse)
 
 # メトリック記録
-run.log('正規化率', alpha)
-run.log('平均二乗誤差', mean_squared_error(preds, data['test']['y']))
+run.log('alpha', alpha)
+run.log('mse', mse)
 
+# モデルファイルの保存
+model_name = "prelab3.pkl"
+os.makedirs('outputs', exist_ok=True)
+# note file saved in the outputs folder is automatically uploaded into experiment record
+with run:
+    joblib.dump(value=reg, filename='outputs/' + model_name)
+
+# run終了
 run.complete()
+
+
+# 今回のrun情報をrun_id.jsonに書き込み
+run_id={}
+run_id['run_id'] = run.id
+run_id['experiment_name'] = run.experiment.name
+with open('aml_config/run_id.json', 'w') as outfile:
+  json.dump(run_id,outfile)

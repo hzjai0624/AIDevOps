@@ -1,11 +1,11 @@
 # Dockerイメージの作成
-# --> Azure Container Registryに保存
+# Dockerイメージは、Azure ML serviceのAzure Container Registryへ自動保存
 import os, json, sys
 from azureml.core import Workspace
 from azureml.core.image import ContainerImage, Image
 from azureml.core.model import Model
 
-# Get workspace
+# ワークスペース情報の取得
 ws = Workspace.from_config()
 
 # Get the latest model details

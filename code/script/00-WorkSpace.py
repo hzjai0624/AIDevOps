@@ -2,9 +2,9 @@
 from azureml.core import Workspace
 import os, json
 import azureml.core
-print("SDK Version:", azureml.core.VERSION)
+print("Azure ML service Python SDK バージョン:", azureml.core.VERSION)
 
-# config.jsonに予め接続情報を記載します。
+# config.jsonに予め接続情報を記載
 with open("aml_config/config.json") as f:
     config = json.load(f)
 
@@ -12,19 +12,20 @@ workspace_name = config['workspace_name']
 resource_group = config['resource_group']
 subscription_id = config['subscription_id']
 location = config['location']
-#location = 'southcentralus'
+#location = 'southeastasia'
 try:
+    # 既存のWorkspaceを使用
     ws = Workspace.get(name = workspace_name,
                              subscription_id = subscription_id,
                              resource_group = resource_group)
 
 except:
-    # this call might take a minute or two.
+    # 新しいWorkspaceを作成
     ws = Workspace.create(name = workspace_name,
                              subscription_id = subscription_id,
                              resource_group = resource_group,
                              #create_resource_group=True,
                              location=location)
 
-# print Workspace details 
-print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
+# Workspaceの情報 
+print("Workspapce接続先:", ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')

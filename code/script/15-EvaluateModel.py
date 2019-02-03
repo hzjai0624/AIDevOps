@@ -16,7 +16,6 @@ new_model_run_id = config["run_id"]
 experiment_name = config["experiment_name"]
 exp = Experiment(workspace = ws, name = experiment_name)
 
-
 try:
   # 本コードは、保存されているモデルの中で最新のものが現在稼働中のモデルであるという前提
   # Workspaceに登録されているモデルのリスト
@@ -39,15 +38,17 @@ try:
   promote_new_model=False
   if new_model_mse < production_model_mse:
     promote_new_model=True
-    print('新しいモデルの方が精度が高いので、登録します')
+    print('新しいモデルの方が精度が高いので、モデル登録します')
 except:
   promote_new_model=True
-  print('最初のモデルなので登録をします')
+  print('最初のモデルなので、モデル登録します')
 
 run_id = {}
 run_id['run_id'] = ''
-# run idを /aml_config/run_id.json を書き込む
-if promote_new_model:
+
+print("promote_new_model = ", promote_new_model)
+# 新しいモデルの方が精度が高い場合、run idを /aml_config/run_id.json に書き込む
+if promote_new_model: 
   run_id['run_id'] = new_model_run_id
 
 run_id['experiment_name'] = experiment_name

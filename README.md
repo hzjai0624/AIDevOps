@@ -16,12 +16,13 @@ Azure Machine Learning serviceを利用して、モデリング、モデルの�
 既存モデルと新しいモデルの精度を比較します。
 
 ### [モデル登録](./Model-Registeration)
-
+稼働させるモデルを登録します。モデルにバージョンやタグ情報を付与することができます。
 
 ### [モデル配置](./Model-Deployment)
+モデルを推論用Dockerイメージにパッケージ化して、Dockerエンジンにデプロイし、Webサービスとして公開します。
 
 ### [Webサービスのテスト](./Test-Web-Service)
-
+デプロイされたWebサービスに大して、テストデータを送り、出力を確認します。
 
 
 Copyright (C) Microsoft Corporation. All rights reserved.
